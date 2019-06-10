@@ -2,11 +2,12 @@ import React, {Component} from 'react'
 import GifList from '../components/GifList'
 import GifSearch from '../components/GifSearch'
 
+// GifListContainer does data fetching and render its coresponding sub-component: GifList and GifSearch 
 export default class GifListContainer extends Component {
 constructor() {
   super()
   this.state = {
-    gifs: [] //array of images
+    gifs: [], //array of images
   }
 }
 
@@ -15,8 +16,8 @@ componentDidMount() {
 }
 
 //fetching the data
-fetchGifs = (query="birds") => {
-  fetch(`https://api.giphy.com/v1/gifs/search?q=${query}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
+fetchGifs = (input="birds") => {
+  fetch(`https://api.giphy.com/v1/gifs/search?q=${input}&api_key=dc6zaTOxFJmzC&rating=g&limit=3`)
     .then(res => res.json())
     .then(({data}) => {
       this.setState({
